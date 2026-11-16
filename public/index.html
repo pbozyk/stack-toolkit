@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stack Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="no-bar home">
+  <header class="cs-header">
+    <a class="logo" href="/">
+      <span class="logo-mark"><i data-icon="layers"></i></span>
+      <span class="logo-text"><b>Stack Toolkit</b><small>for Contentstack</small></span>
+    </a>
+    <nav class="cs-nav">
+      <a href="/migrations"><i data-icon="box"></i>Schema Migration</a>
+      <a href="/entry-migration"><i data-icon="files"></i>Entry Migration</a>
+      <a href="/entries"><i data-icon="list"></i>Entry Cleanup</a>
+      <a href="/assets"><i data-icon="images"></i>Asset Cleanup</a>
+      <a href="/broken-refs"><i data-icon="unlink"></i>Broken References</a>
+    </nav>
+    <nav class="cs-nav end">
+      <a href="/changelog" class="version-badge" data-app-version title="What's new">v</a>
+      <a href="/stacks"><i data-icon="key-round"></i>Stacks</a>
+    </nav>
+  </header>
+  <a class="cs-sub" id="stacks" href="/stacks" title="Manage stack connections"></a>
+
+  <main class="cs-main home-main">
+    <h1 class="home-title">Explore Tools</h1>
+    <div class="tools">
+      <a class="tool-card" href="/migrations">
+        <div class="tool-art"><span class="tool-icon"><i data-icon="box"></i></span></div>
+        <h3>Schema Migration</h3>
+        <p>Compare and copy content types and global fields between stacks</p>
+      </a>
+      <a class="tool-card" href="/entry-migration">
+        <div class="tool-art"><span class="tool-icon"><i data-icon="files"></i></span></div>
+        <h3>Entry Migration</h3>
+        <p>Copy entries with their languages, references and assets between stacks</p>
+      </a>
+      <a class="tool-card" href="/entries">
+        <div class="tool-art"><span class="tool-icon"><i data-icon="list"></i></span></div>
+        <h3>Entry Cleanup</h3>
+        <p>Bulk-delete entries in any language, with an optional backup</p>
+      </a>
+      <a class="tool-card" href="/assets">
+        <div class="tool-art"><span class="tool-icon"><i data-icon="images"></i></span></div>
+        <h3>Asset Cleanup</h3>
+        <p>Find assets no entry uses and free up space</p>
+      </a>
+      <a class="tool-card" href="/broken-refs">
+        <div class="tool-art"><span class="tool-icon"><i data-icon="unlink"></i></span></div>
+        <h3>Broken References</h3>
+        <p>Find and remove references to deleted entries and assets</p>
+      </a>
+
+      
+      <div class="tool-card soon" aria-disabled="true">
+        <div class="tool-art"><span class="soon-badge">Soon</span><span class="tool-icon"><i data-icon="languages"></i></span></div>
+        <h3>Localization Coverage</h3>
+        <p>See which entries are missing translations</p>
+      </div>
+      <div class="tool-card soon" aria-disabled="true">
+        <div class="tool-art"><span class="soon-badge">Soon</span><span class="tool-icon"><i data-icon="send"></i></span></div>
+        <h3>Bulk Publish</h3>
+        <p>Publish or unpublish many entries at once</p>
+      </div>
+      <div class="tool-card soon" aria-disabled="true">
+        <div class="tool-art"><span class="soon-badge">Soon</span><span class="tool-icon"><i data-icon="replace"></i></span></div>
+        <h3>Find &amp; Replace</h3>
+        <p>Change text across entries with a preview</p>
+      </div>
+      <div class="tool-card soon" aria-disabled="true">
+        <div class="tool-art"><span class="soon-badge">Soon</span><span class="tool-icon"><i data-icon="chart-column"></i></span></div>
+        <h3>Content Audit</h3>
+        <p>Entry counts, drafts and stale content per type</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/icons.js"></script>
+  <script src="/shell.js"></script>
+  <script src="/ui.js"></script>
+  <script src="/home.js"></script>
+</body>
+</html>

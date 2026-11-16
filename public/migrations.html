@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schema Migration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="cs-header">
+    <a class="logo" href="/">
+      <span class="logo-mark"><i data-icon="layers"></i></span>
+      <span class="logo-text"><b>Stack Toolkit</b><small>for Contentstack</small></span>
+    </a>
+    <nav class="cs-nav">
+      <a href="/migrations" class="active"><i data-icon="box"></i>Schema Migration</a>
+      <a href="/entry-migration"><i data-icon="files"></i>Entry Migration</a>
+      <a href="/entries"><i data-icon="list"></i>Entry Cleanup</a>
+      <a href="/assets"><i data-icon="images"></i>Asset Cleanup</a>
+      <a href="/broken-refs"><i data-icon="unlink"></i>Broken References</a>
+    </nav>
+    <nav class="cs-nav end">
+      <a href="/changelog" class="version-badge" data-app-version title="What's new">v</a>
+      <a href="/stacks"><i data-icon="key-round"></i>Stacks</a>
+    </nav>
+  </header>
+  <a class="cs-sub" id="stacks" href="/stacks" title="Manage stack connections"></a>
+
+  <div class="cs-shell">
+    <aside class="cs-views">
+      <div class="views-title">Views</div>
+      <div id="views"></div>
+    </aside>
+
+    <div class="cs-main">
+      <div class="page-head">
+        <h1>Schema Migration <span class="help" title="Compare content types and global fields, then migrate them from the source to the target stack."><i data-icon="circle-help"></i></span></h1>
+        <button id="refresh" class="btn"><i data-icon="refresh-cw"></i>Refresh</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="search">
+          <i data-icon="search"></i>
+          <input id="search" type="search" placeholder="Search by name or UID">
+        </div>
+        <select id="statusFilter" hidden>
+          <option value="">All statuses</option>
+          <option value="new">New</option>
+          <option value="changed">Changed</option>
+          <option value="same">Identical</option>
+          <option value="target_only">Target only</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn link" id="selectDiff">Select new and changed</button>
+        <button class="btn link" id="addDeps">Add required dependencies</button>
+        <button class="btn link" id="clearSel">Clear</button>
+      </div>
+
+      <div class="info-strip">
+        Relations:
+        <span class="chip c-sel">selected</span>
+        <span class="chip c-ok">in target</span>
+        <span class="chip c-warn">in target, but differs</span>
+        <span class="chip c-miss">missing in target</span>
+      </div>
+
+      <div id="banner"></div>
+      <main id="lists"><p class="empty">Loading…</p></main>
+    </div>
+  </div>
+
+  <footer class="bar">
+    <span id="selCount">Nothing selected</span>
+    <span class="spacer"></span>
+    <button class="btn primary" id="planBtn" disabled>Preview migration plan</button>
+  </footer>
+
+  <dialog id="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <button class="icon-btn" data-close aria-label="Close"><i data-icon="x"></i></button>
+    </div>
+    <div id="modalBody"></div>
+    <div class="modal-foot" id="modalFoot"></div>
+  </dialog>
+
+  <script src="/icons.js"></script>
+  <script src="/shell.js"></script>
+  <script src="/ui.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

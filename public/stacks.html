@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stacks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="no-bar">
+  <header class="cs-header">
+    <a class="logo" href="/">
+      <span class="logo-mark"><i data-icon="layers"></i></span>
+      <span class="logo-text"><b>Stack Toolkit</b><small>for Contentstack</small></span>
+    </a>
+    <nav class="cs-nav">
+      <a href="/migrations"><i data-icon="box"></i>Schema Migration</a>
+      <a href="/entry-migration"><i data-icon="files"></i>Entry Migration</a>
+      <a href="/entries"><i data-icon="list"></i>Entry Cleanup</a>
+      <a href="/assets"><i data-icon="images"></i>Asset Cleanup</a>
+      <a href="/broken-refs"><i data-icon="unlink"></i>Broken References</a>
+    </nav>
+    <nav class="cs-nav end">
+      <a href="/changelog" class="version-badge" data-app-version title="What's new">v</a>
+      <a href="/stacks" class="active"><i data-icon="key-round"></i>Stacks</a>
+    </nav>
+  </header>
+  <div class="cs-sub" id="stacks"></div>
+
+  <div class="cs-main narrow">
+    <div class="page-head">
+      <h1>Stacks <span class="help" title="Connect the source and target stacks with an API key and a management token."><i data-icon="circle-help"></i></span></h1>
+      <button class="btn" id="logout"><i data-icon="log-out"></i>Forget all credentials</button>
+    </div>
+
+    <div id="banner"></div>
+    <div class="stack-cards" id="cards"></div>
+
+    <div class="security-note">
+      <i data-icon="shield-check"></i>
+      <div>
+        <b>How credentials are kept</b>
+        <ul>
+          <li>Only in this server's memory, for your browser session – never written to disk and never sent back to the browser.</li>
+          <li>Your browser only holds a random session id (an HttpOnly cookie that page scripts can't read). Other people using this server have their own sessions and can't see or use your stacks.</li>
+          <li>Forgotten automatically after <span id="idle">a period</span> of inactivity, when the server restarts, or right away with “Disconnect” / “Forget all credentials”.</li>
+          <li>Use a management token scoped to what you need, and on a shared server keep <code>.env</code> without credentials.</li>
+        </ul>
+        <small class="none" id="expires"></small>
+      </div>
+    </div>
+  </div>
+
+  <script src="/icons.js"></script>
+  <script src="/shell.js"></script>
+  <script src="/connect.js"></script>
+  <script src="/stacks.js"></script>
+</body>
+</html>

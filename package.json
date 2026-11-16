@@ -1,0 +1,14 @@
+{
+  "name": "stack-toolkit",
+  "version": "1.1.6",
+  "private": true,
+  "type": "module",
+  "description": "Stack Toolkit for Contentstack – schema and entry migration, entry and asset cleanup, broken references",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
