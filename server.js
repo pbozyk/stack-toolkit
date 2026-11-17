@@ -41,6 +41,8 @@ const loopback = ['127.0.0.1', 'localhost', '::1'].includes(bindHost);
 // Host header allow-list – blocks DNS rebinding (a foreign site resolving its name to this server).
 const allowedHosts = new Set((env.ALLOWED_HOSTS || `localhost:${port},127.0.0.1:${port}`)
   .split(',').map((h) => h.trim().toLowerCase()).filter(Boolean));
+// On Render, the service's own *.onrender.com name is always allowed.
+if (env.RENDER_EXTERNAL_HOSTNAME) allowedHosts.add(env.RENDER_EXTERNAL_HOSTNAME.toLowerCase());
 const trustProxy = env.TRUST_PROXY === '1';
 
 const sessions = createSessionStore({

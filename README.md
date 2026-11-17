@@ -39,6 +39,11 @@ How credentials entered in the panel are protected:
 Running it for a team: set `HOST`, `ALLOWED_HOSTS` and put it behind HTTPS (`TRUST_PROXY=1` behind a reverse proxy, or
 `COOKIE_SECURE=1`). Without HTTPS credentials would travel over the network in plain text.
 
+The app needs one long-running Node process (sessions and running jobs live in memory), so serverless hosts such as
+Vercel don't fit. On [Render](https://render.com): **New → Blueprint**, pick this repository and `render.yaml` sets
+everything up – the `*.onrender.com` hostname is allowed automatically; leave `ALLOWED_HOSTS` empty or add a custom
+domain. On the free plan the service sleeps after 15 minutes without traffic, which also forgets all sessions.
+
 ## Schema Migration
 
 - The panel fetches content types, global fields and extensions from both stacks and shows, for each item:

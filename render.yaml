@@ -1,0 +1,19 @@
+# Render Blueprint – one web service, no credentials stored: users connect stacks in the panel.
+# The service's *.onrender.com hostname is allowed automatically (RENDER_EXTERNAL_HOSTNAME);
+# for a custom domain, add it to ALLOWED_HOSTS.
+services:
+  - type: web
+    name: stack-toolkit
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: HOST
+        value: 0.0.0.0
+      - key: TRUST_PROXY
+        value: "1"
+      - key: ALLOWED_HOSTS
+        sync: false
