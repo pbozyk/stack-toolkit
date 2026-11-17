@@ -20,7 +20,8 @@ Credentials can come from two places:
 
 - **`.env`** – handy on your own machine. They are shared by everyone who can open the panel, so on a shared server keep them empty.
 - **The Stacks page** (http://localhost:3000/stacks, key icon in the header) – each person enters their own API key and
-  management token. They override `.env` for that browser session only.
+  management token. They override `.env` for that browser session only. Pasting a `.env` file into any field fills the
+  forms: `SOURCE_*` / `TARGET_*` lines go to their cards, other names like `CONTENTSTACK_API_KEY` to the card pasted into.
 
 Only the source stack is required. The target is needed just for Schema Migration – if it's missing, that page asks for it
 right there. The cleanups run on the source stack; the Source/Target switch appears only when both stacks are connected.

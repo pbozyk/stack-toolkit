@@ -520,6 +520,7 @@ async function api(req, res, url) {
       source: describe(ctx.stacks.source, 'eu'),
       target: describe(ctx.stacks.target, 'eu'),
       regions: REGIONS,
+      regionHosts: Object.fromEntries(REGIONS.map((r) => [r, resolveHost(r)])),
       session: { expiresAt: sessions.expiresAt(session), idleHours: Number(env.SESSION_IDLE_HOURS) || 8 },
     });
   }

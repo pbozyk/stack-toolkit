@@ -519,3 +519,11 @@ body:has(.changelog-main) { background: var(--bg); padding-bottom: 0; }
 .release .tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); border: 1px solid var(--line); padding: 1px 6px; border-radius: 3px; }
 .release ul { margin: 0; padding-left: 18px; color: var(--text-2); font-size: 14px; }
 .release ul li { margin: 3px 0; }
+
+/* Connect cards: paste-a-.env tip, fill note and highlight */
+.paste-tip { display: flex; align-items: center; gap: 6px; margin: 0; color: var(--muted); font-size: 13px; }
+.paste-tip .icon { width: 14px; height: 14px; }
+.form-note { display: flex; align-items: center; gap: 6px; color: var(--ok); font-size: 14px; }
+.form-note .icon { flex: none; }
+@keyframes just-filled { from { background: var(--primary-tint); } to { background: transparent; } }
+.just-filled { animation: just-filled 1.6s ease-out; }

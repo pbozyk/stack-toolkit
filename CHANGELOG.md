@@ -6,6 +6,8 @@ Shown in the app at `/changelog`. Format: `## <version> — <title>`, an optiona
 - Ready to run as a shared, public instance: no credentials need to be stored in `.env`.
 - Every user connects their own source and target stacks on the Stacks page; credentials stay in server memory for their browser session only.
 - Sessions expire after inactivity, on server restart or with “Forget all credentials”.
+- Paste a `.env` file into any field on the Stacks page to fill both forms at once.
+- Ready to deploy on Render (`render.yaml`).
 
 ## 1.1.5 — Broken References
 - New tool: scans every entry in every locale for references to deleted entries, content types and assets.
