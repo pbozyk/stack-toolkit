@@ -2,6 +2,12 @@
 
 Shown in the app at `/changelog`. Format: `## <version> — <title>`, an optional `Label: …` line, then bullet points.
 
+## 1.1.7 — Lorem Ipsum
+- New tool: fills a content type with generated test entries that follow its schema – every common field type, nested groups, global fields and modular blocks.
+- References point at existing entries. The Assets option picks what goes into file fields: random existing assets, placeholder images uploaded into a “Lorem Ipsum” folder, or nothing.
+- Optional localized versions in the chosen languages and a sample entry preview before anything is written.
+- Generated entries are tagged, and Entry Cleanup opens straight on them for deletion.
+
 ## 1.1.6 — Public version
 - Ready to run as a shared, public instance: no credentials need to be stored in `.env`.
 - Every user connects their own source and target stacks on the Stacks page; credentials stay in server memory for their browser session only.

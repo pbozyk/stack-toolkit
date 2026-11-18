@@ -11,6 +11,7 @@ import { deleteAssets, scanAssets } from './lib/assets.js';
 import { createSessionStore } from './lib/session.js';
 import { fixBrokenRefs, scanBrokenRefs } from './lib/broken-refs.js';
 import { listForMigration, matchFields, planEntryMigration, runEntryMigration } from './lib/entry-migration.js';
+import { generateLorem, normalizeLoremOptions, previewLorem } from './lib/lorem.js';
 import { randomUUID } from 'node:crypto';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -446,6 +447,36 @@ async function entryMigrationApi(req, res, ctx, route, url) {
   throw new HttpError(404, 'Unknown endpoint');
 }
 
+// --- lorem ipsum ------------------------------------------------------------------
+
+async function loremApi(req, res, ctx, route) {
+  const { stack, ct, options } = await readBody(req);
+  const client = pickStack(ctx, stack);
+  if (!CT_UID.test(ct || '')) throw new HttpError(400, 'Invalid content type UID.');
+  let opts;
+  try { opts = normalizeLoremOptions(options); } catch (e) { throw new HttpError(400, e.message); }
+
+  if (route === 'POST /api/lorem/preview') return sendJson(res, 200, await previewLorem(client, ct, opts));
+  if (route === 'POST /api/lorem/generate') {
+    if (ctx.data.loremRunning) throw new HttpError(409, 'Entries are already being generated.');
+    ctx.data.loremRunning = true;
+    try {
+      const write = startStream(res);
+      try {
+        const result = await generateLorem(client, ct, opts, { onProgress: write });
+        write({ done: true, created: result.created.length, failed: result.failed.length, placeholders: result.placeholders, warnings: result.warnings });
+      } catch (e) {
+        write({ done: true, error: e.message });
+      }
+      res.end();
+    } finally {
+      ctx.data.loremRunning = false;
+    }
+    return;
+  }
+  throw new HttpError(404, 'Unknown endpoint');
+}
+
 // --- schemas --------------------------------------------------------------------
 
 async function getSchemaState(ctx, refresh) {
@@ -529,6 +560,7 @@ async function api(req, res, url) {
   if (url.pathname.startsWith('/api/assets')) return assetsApi(req, res, ctx, route, url);
   if (url.pathname.startsWith('/api/broken-refs')) return brokenRefsApi(req, res, ctx, route, url);
   if (url.pathname.startsWith('/api/entry-migration')) return entryMigrationApi(req, res, ctx, route, url);
+  if (url.pathname.startsWith('/api/lorem')) return loremApi(req, res, ctx, route);
   return schemasApi(req, res, ctx, route, url);
 }
 

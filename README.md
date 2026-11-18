@@ -129,6 +129,22 @@ each selected version fresh and saves it without the broken references; everythi
 save when a mandatory field would end up empty – those show up as errors. Fixed versions are saved as drafts, so publish
 them again if needed.
 
+## Lorem Ipsum
+
+In the panel: **Lorem Ipsum** (http://localhost:3000/lorem). Pick a content type and generate test entries that follow
+its schema:
+
+- text, multiline, Markdown, HTML and JSON RTE, numbers, booleans, dates, selects, links, groups, global fields and
+  modular blocks – recursively; `unique` fields get a random suffix, simple validation patterns are matched, and fields
+  named like slugs, URLs, e-mails or phones get values that look the part,
+- references point at random existing entries of the referenced content types,
+- file fields use random existing assets, placeholder PNGs uploaded once per run into a `Lorem Ipsum` folder, or stay empty,
+- entries are created in the master language; checked languages get a localized version too (title prefixed with the code).
+
+A sample entry is shown before anything is written. Custom fields (extensions) and taxonomies are skipped and listed as
+warnings. Every entry and placeholder asset gets a tag (`lorem-ipsum` by default) – **Open in Entry Cleanup** after
+generating shows them, ready to delete; unused placeholders show up in Asset Cleanup.
+
 ## Changelog
 
 Release notes live in [`CHANGELOG.md`](CHANGELOG.md) and are shown in the app at `/changelog` (the version badge in the

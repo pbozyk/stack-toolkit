@@ -395,8 +395,15 @@ $('#deleteBtn').addEventListener('click', () => askDelete([...selected].filter((
     }
     // The Source/Target switch only makes sense when both stacks are connected; Source is always the default.
     document.querySelector('.segmented').hidden = !(config.source.configured && config.target.configured);
-    $('#stack').value = 'source';
+    // Links from other tools (e.g. Lorem Ipsum) can preselect ?stack=, ?ct= and ?query=.
+    const params = new URLSearchParams(location.search);
+    $('#stack').value = params.get('stack') === 'target' && config.target.configured ? 'target' : 'source';
+    if (params.get('query')) $('#query').value = params.get('query');
     await loadContentTypes();
+    if (params.get('ct') && ctList.some((c) => c.uid === params.get('ct'))) {
+      $('#ct').value = params.get('ct');
+      await loadEntries();
+    }
   } catch (e) {
     banner(esc(e.message));
   }

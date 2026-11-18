@@ -527,3 +527,16 @@ body:has(.changelog-main) { background: var(--bg); padding-bottom: 0; }
 .form-note .icon { flex: none; }
 @keyframes just-filled { from { background: var(--primary-tint); } to { background: transparent; } }
 .just-filled { animation: just-filled 1.6s ease-out; }
+
+/* --- lorem ipsum --- */
+.lorem-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px 20px; }
+.lorem-options .wide { grid-column: 1 / -1; }
+.locale-checks { display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 400; }
+.locale-checks .check-row { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); white-space: nowrap; }
+.locale-checks .check-row > * { flex: none; }
+.locale-checks code { color: var(--muted); font-size: 12px; }
+.json-view {
+  margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px; font-size: 12px; max-height: 60vh; overflow: auto; font-family: var(--mono); color: var(--text);
+}
+.locale-checks input[type=checkbox] { width: auto; margin: 0; }
